@@ -36,4 +36,19 @@ public class ProducerTest {
         producer.fanoutProducer(message);
     }
 
+    @Test
+    public void topicProducer() {
+        producer.topicProducer(message);
+    }
+
+    @Test
+    public void headersProducer() {
+        producer.headersProducer(message);
+    }
+
+    @Test
+    public void topicProducer2() {
+        producer.topicProducer2(message);
+    }
+
 }

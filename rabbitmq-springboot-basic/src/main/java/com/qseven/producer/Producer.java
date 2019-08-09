@@ -22,7 +22,19 @@ public class Producer {
     }
 
     public void topicProducer(Message message) {
-        rabbitTemplate.convertAndSend("ex.topic.exchange", "rk-routing-key", message);
+        rabbitTemplate.convertAndSend("ex.topic.exchange", "rk-routing-key123", message);
+    }
+
+    public void headersProducer(Message message) {
+        rabbitTemplate.convertAndSend("ex.headers.exchange", "", message,
+                m -> {
+                    m.getMessageProperties().getHeaders().put("headers-key", null);
+                    return m;
+                });
+    }
+
+    public void topicProducer2(Message message) {
+        rabbitTemplate.convertAndSend("ex.topic.annotation.exchange", "rk-hi", message);
     }
 
 }
